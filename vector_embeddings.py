@@ -6,7 +6,7 @@ import streamlit as st
 import os, warnings
 warnings.filterwarnings('ignore')
 
-os.environ["HUGGINGFACEHUB_API_TOKEN"] = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
+#os.environ["HUGGINGFACEHUB_API_TOKEN"] ="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"
 
 # Load the PDF
 loader = PyPDFLoader("Kaushikee_Bhawsar_Resume.pdf")

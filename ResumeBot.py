@@ -6,6 +6,7 @@ from langchain_community.vectorstores import Chroma
 from langchain_community.llms import HuggingFaceHub
 from langchain.prompts import PromptTemplate
 from langchain.chains import RetrievalQA
+#from transformers import AutoModelForCausalLM, AutoTokenizer
 import warnings, os
 warnings.filterwarnings("ignore")
 __import__('pysqlite3')
@@ -14,7 +15,7 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 data_directory = os.path.join(os.path.dirname(__file__), "data")
 
-os.environ["HUGGINGFACEHUB_API_TOKEN"] = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
+os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
 
 # Load the vector store from disk
 embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
@@ -34,6 +35,12 @@ vector_store = Chroma(embedding_function=embedding_model, persist_directory=data
 #     repo_id="mistralai/Mixtral-8x7B-Instruct-v0.1",
 #     model_kwargs={"temperature": 0.1, "max_new_tokens":1024},
 # )
+
+#model_name = "meta-llama/Meta-Llama-3-8B-Instruct"
+#model = AutoModelForCausalLM.from_pretrained(model_name)
+#tokenizer = AutoTokenizer.from_pretrained(model_name)
+
+
 hf_hub_llm = HuggingFaceHub(
     repo_id="meta-llama/Meta-Llama-3-8B-Instruct",
     model_kwargs={"temperature": 0.1, "max_new_tokens":1024},
